@@ -1,6 +1,7 @@
 
 import { Character, elizaLogger, ModelProviderName, settings, validateCharacterConfig } from "@elizaos/core";
 import fs from "fs";
+import os from "os";
 import path from "path";
 import yargs from "yargs";
 
@@ -101,7 +102,7 @@ export function getTokenForProvider(
       return character.settings?.secrets?.GROQ_API_KEY || settings.GROQ_API_KEY;
     case ModelProviderName.NEARAI:
         try {
-            const config = JSON.parse(fs.readFileSync(path.join(process.env.HOME, '.nearai/config.json'), 'utf8'));
+            const config = JSON.parse(fs.readFileSync(path.join(os.homedir(), '.nearai/config.json'), 'utf8'));
             return JSON.stringify(config?.auth);
         } catch (e) {
             elizaLogger.warn(`Error loading NEAR AI config: ${e}`);
