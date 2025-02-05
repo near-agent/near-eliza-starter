@@ -1,6 +1,6 @@
 services:
     eliza:
-        command: ["pnpm", "start", "--character=./characters/eliza.character.json"]
+        command: ["pnpm", "start"]
         build:
             context: .
             dockerfile: Dockerfile
