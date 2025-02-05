@@ -1,6 +1,6 @@
 services:
     eliza:
-        command: ["pnpm", "start"]
+        command: ["pnpm", "start", "--character=./characters/eliza.character.json"]
         build:
             context: .
             dockerfile: Dockerfile
@@ -25,5 +25,5 @@ services:
             - HELIUS_API_KEY=
             - SERVER_PORT=3000
         ports:
-            - "3101:3000"
+            - "3000:3000"
         restart: always
