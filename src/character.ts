@@ -5,7 +5,7 @@ export const character: Character = {
     name: "Eliza",
     plugins: [],
     clients: [],
-    modelProvider: ModelProviderName.OPENROUTER,
+    modelProvider: ModelProviderName.NEARAI,
     settings: {
         secrets: {},
         voice: {
