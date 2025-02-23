@@ -1,16 +1,94 @@
-# Eliza
+# near-eliza-starter
 
-## Edit the character files
+The starter for building [Eliza](https://elizaos.github.io/eliza/) agents with [NEAR Protocol](https://near.org/) and [NEAR AI](https://docs.near.ai/).
 
-Open `src/character.ts` to modify the default character. Uncomment and edit.
+## Prepare Environment
+
+### 1. Install NEAR AI CLI
+
+NEAR AI provides free agent hosting and inference APIs. You can skip this step if you want to use other model providers except NEAR AI.
+
+Install NEAR AI CLI following the instructions in https://docs.near.ai/cli. 
+
+```bash
+python3 -m pip install nearai
+nearai login
+```
+
+### 2. Configure environment variables
+
+Duplicate environment template
+
+```bash
+cp .env.example .env
+```
+
+Add your NEAR account and private key to `.env`
+
+```env
+NEAR_NETWORK=testnet
+NEAR_RPC_URL=https://neart.lava.build
+NEAR_ADDRESS=<your testnet NEAR account>
+NEAR_WALLET_SECRET_KEY=<private key>
+```
+
+Specify the models to use, e.g. DeepSeek-R1
+
+```env
+SMALL_NEARAI_MODEL=  # Default: fireworks::accounts/fireworks/models/llama-v3p2-3b-instruct
+MEDIUM_NEARAI_MODEL= # Default: fireworks::accounts/fireworks/models/llama-v3p1-70b-instruct
+LARGE_NEARAI_MODEL=fireworks::accounts/fireworks/models/deepseek-r1  # Default: fireworks::accounts/fireworks/models/llama-v3p1-405b-instruct
+IMAGE_NEARAI_MODEL=  # Default: fireworks::accounts/fireworks/models/playground-v2-5-1024px-aesthetic
+```
+
+## Install and Start Agent
+
+> Node.js version >= 22 is required
+
+### 1. Install pnpm
+
+```bash
+npm i -g pnpm
+```
+
+### 2. Install dependencies
+```bash
+# agent dependencies
+pnpm i
+# web client dependencies
+cd client && pnpm i && cd ..
+```
+
+### 3. Start agent
+
+In one terminal session, start the agent server, in interactive mode by default.
+
+```bash
+pnpm start
+```
+
+### 4. Start web client
+
+Start the web client in another terminal session
+
+```bash
+pnpm start:client
+```
+
+## Customize Your Agent
 
 ### Custom characters
+
+Open `src/character.ts` to modify the default character.
 
 To load custom characters instead:
 - Use `pnpm start --characters="path/to/your/character.json"`
 - Multiple character files can be loaded simultaneously
 
-### Add clients
+### Add more clients
+
+Add Discord and Twitter for example
+
 ```
 # in character.ts
 clients: [Clients.TWITTER, Clients.DISCORD],
@@ -19,76 +97,31 @@ clients: [Clients.TWITTER, Clients.DISCORD],
 clients: ["twitter", "discord"]
 ```
 
-## Duplicate the .env.example template
+Add login credentials and keys to `.env`
 
-```bash
-cp .env.example .env
-```
-
-\* Fill out the .env file with your own values.
-
-### Add login credentials and keys to .env
 ```
 DISCORD_APPLICATION_ID="discord-application-id"
 DISCORD_API_TOKEN="discord-api-token"
-...
-OPENROUTER_API_KEY="sk-xx-xx-xxx"
-...
+
 TWITTER_USERNAME="username"
 TWITTER_PASSWORD="password"
 TWITTER_EMAIL="your@email.com"
 ```
 
-## Install dependencies and start your agent
+### Use a different model provider
 
-```bash
-pnpm i && pnpm start
+Use OpenRouter for example
+
 ```
-Note: this requires node to be at least version 22 when you install packages and run the agent.
+# in character.ts
+modelProvider: ModelProviderName.OPENROUTER,
 
-## Run with Docker
-
-### Build and run Docker Compose (For x86_64 architecture)
-
-#### Edit the docker-compose.yaml file with your environment variables
-
-```yaml
-services:
-    eliza:
-        environment:
-            - OPENROUTER_API_KEY=blahdeeblahblahblah
+# in character.json
+"modelProvider": "openrouter",
 ```
 
-#### Run the image
+Edit environment variable
 
-```bash
-docker compose up
 ```
-
-### Build the image with Mac M-Series or aarch64
-
-Make sure docker is running.
-
-```bash
-# The --load flag ensures the built image is available locally
-docker buildx build --platform linux/amd64 -t eliza-starter:v1 --load .
+OPENROUTER_API_KEY="sk-xx-xx-xxx"
 ```
-
-#### Edit the docker-compose-image.yaml file with your environment variables
-
-```yaml
-services:
-    eliza:
-        environment:
-            - OPENROUTER_API_KEY=blahdeeblahblahblah
-```
-
-#### Run the image
-
-```bash
-docker compose -f docker-compose-image.yaml up
-```
-
-# Deploy with Railway
-
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/template/aW47_j)
