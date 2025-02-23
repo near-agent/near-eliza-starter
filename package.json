@@ -1,5 +1,5 @@
 {
-  "name": "@elizaos/eliza-starter",
+  "name": "near-eliza-starter",
   "version": "0.1.9",
   "main": "src/index.ts",
   "type": "module",
@@ -8,7 +8,8 @@
     "start": "tsc && node --loader ts-node/esm src/index.ts",
     "clean": "./scripts/clean.sh",
     "start:service:all": "pm2 start pnpm --name=\"all\" --restart-delay=3000 --max-restarts=10 -- run start:all",
-    "stop:service:all": "pm2 stop all"
+    "stop:service:all": "pm2 stop all",
+    "postinstall": "bash scripts/multichain-tools/update-rpc.sh"
   },
   "dependencies": {
     "@elizaos/adapter-postgres": "0.1.9",
@@ -18,12 +19,13 @@
     "@elizaos/client-discord": "0.1.9",
     "@elizaos/client-telegram": "0.1.9",
     "@elizaos/client-twitter": "0.1.9",
-    "@elizaos/core": "npm:@near-agent/elizaos-core@0.1.9",
+    "@elizaos/core": "npm:@near-agent/elizaos-core@0.1.9-patch.2",
     "@elizaos/plugin-bootstrap": "0.1.9",
     "@elizaos/plugin-image-generation": "0.1.9",
-    "@elizaos/plugin-multichain": "npm:@near-agent/elizaos-plugin-multichain@0.1.0-alpha.1",
+    "@elizaos/plugin-multichain": "npm:@near-agent/elizaos-plugin-multichain",
     "@elizaos/plugin-node": "0.1.9",
     "@tavily/core": "0.0.2",
+    "multichain-tools": "4.0.0",
     "amqplib": "0.10.5",
     "better-sqlite3": "11.5.0",
     "fs": "0.0.1-security",
@@ -39,7 +41,7 @@
   },
   "pnpm": {
     "overrides": {
-      "@elizaos/core@0.1.9": "npm:@near-agent/elizaos-core@0.1.9",
+      "@elizaos/core@0.1.9": "npm:@near-agent/elizaos-core@0.1.9-patch.2",
       "onnxruntime-node": "1.20.0"
     }
   },
