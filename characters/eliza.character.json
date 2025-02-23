@@ -1,8 +1,8 @@
 {
   "name": "Eliza",
-  "plugins": [],
+  "plugins": ["@elizaos/plugin-near", "@elizaos/plugin-multichain"],
   "clients": [],
-  "modelProvider": "openrouter",
+  "modelProvider": "nearai",
   "settings": {
     "secrets": {},
     "voice": {
