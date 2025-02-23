@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "tsup src/index.ts --format esm --dts",
-    "start": "tsc && node --loader ts-node/esm src/index.ts",
+    "start": "tsc --noEmit && node --loader ts-node/esm src/index.ts",
+    "start:client": "pnpm --dir client dev",
     "clean": "./scripts/clean.sh",
     "start:service:all": "pm2 start pnpm --name=\"all\" --restart-delay=3000 --max-restarts=10 -- run start:all",
     "stop:service:all": "pm2 stop all",
@@ -23,6 +24,7 @@
     "@elizaos/plugin-bootstrap": "0.1.9",
     "@elizaos/plugin-image-generation": "0.1.9",
     "@elizaos/plugin-multichain": "npm:@near-agent/elizaos-plugin-multichain",
+    "@elizaos/plugin-near": "npm:@near-agent/elizaos-plugin-near@0.1.9-patch.2",
     "@elizaos/plugin-node": "0.1.9",
     "@tavily/core": "0.0.2",
     "multichain-tools": "4.0.0",

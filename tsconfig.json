@@ -26,4 +26,5 @@
     "transpileOnly": true,
     "esm": true,
   },
+  "exclude": ["client"]
 }

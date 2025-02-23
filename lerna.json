@@ -1,0 +1,12 @@
+{
+	"version": "0.1.9",
+	"packages": ["client"],
+	"npmClient": "pnpm",
+	"command": {
+		"publish": {
+			"registry": "https://registry.npmjs.org/",
+			"access": "public",
+			"allowBranch": "main"
+		}
+	}
+}
