@@ -105,7 +105,7 @@ export function getTokenForProvider(
             const config = JSON.parse(fs.readFileSync(path.join(os.homedir(), '.nearai/config.json'), 'utf8'));
             return JSON.stringify(config?.auth);
         } catch (e) {
-            elizaLogger.warn(`Error loading NEAR AI config: ${e}`);
+            elizaLogger.warn(`Error loading NEAR AI config. The NEARAI_API_KEY environment variable will be used. ${e}`);
         }
         return (
             character.settings?.secrets?.NEARAI_API_KEY ||
