@@ -13,10 +13,10 @@ ports:
     onOpen: open-browser
     visibility: public
 tasks:
-  - name: Set up NEAR AI CLI
+  - name: NEAR AI CLI
     init: python -m pip install nearai
     command: nearai login --remote
-  - name: Create NEAR dev account on testnet
+  - name: Create NEAR Testnet Account
     init: npm i -g near-cli-rs
     command: |
       cp .env.example .env
@@ -27,7 +27,7 @@ tasks:
       NEAR_WALLET_SECRET_KEY=$(echo $NEAR_ACCOUNT_KEYS | jq -r ".private_key")
       sed -i 's/NEAR_ADDRESS=.*$/NEAR_ADDRESS='${NEAR_ADDRESS}'/g' .env
       sed -i "" 's/NEAR_WALLET_SECRET_KEY=.*$/NEAR_WALLET_SECRET_KEY='${NEAR_WALLET_SECRET_KEY}'/g' .env.test
-  - name: Install agent dependencies
+  - name: Agent Server
     init: pnpm i
-  - name: Install web client dependencies
+  - name: Web Client
     init: cd client && pnpm i && cd ..
