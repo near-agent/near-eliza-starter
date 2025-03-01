@@ -15,10 +15,12 @@ ports:
 tasks:
   - name: NEAR AI CLI
     init: python -m pip install nearai
-    command: nearai login --remote
-  - name: Create NEAR Testnet Account
-    init: npm i -g near-cli-rs
     command: |
+      nearai login --remote
+      echo "Open the above link to login NEAR AI if you haven't done so. Skip this step if it's already completed."
+  - name: Create NEAR Testnet Account
+    init: |
+      npm i -g near-cli-rs
       cp .env.example .env
       near create-dev-account use-random-account-id autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
       NEAR_CREDENTIALS_TESTNET_DIR=~/.near-credentials/testnet
