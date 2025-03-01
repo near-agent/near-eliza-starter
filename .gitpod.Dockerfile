@@ -1,8 +1,5 @@
 FROM gitpod/workspace-python-3.11
 
-# install NEAR AI CLI
-RUN bash -cl "python -m pip install nearai"
-
 # nvm environment variables
 ENV NODE_VERSION 23.3.0
 
