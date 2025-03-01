@@ -14,9 +14,9 @@ ports:
     visibility: public
 tasks:
   - name: NEAR AI CLI
-    init: python -m pip install nearai
     command: |
-      [ -f ~/.nearai/config.json ] || (printf "\n\n*** NEAR AI login ***\n\n" && nearai login --remote)
+      [ -f ~/.nearai/config.json ] && exit
+      printf "*** NEAR AI login ***\n\n" && nearai login --remote
   - name: Create NEAR Testnet Account
     init: |
       NEAR_CREDENTIALS_TESTNET_DIR=~/.near-credentials/testnet
