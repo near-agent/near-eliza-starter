@@ -16,9 +16,17 @@ tasks:
   - name: Set up NEAR AI CLI
     init: python -m pip install nearai
     command: nearai login --remote
-  - name: Install agent dependencies
-    init: |
-      pnpm i
+  - name: Create NEAR dev account on testnet
+    init: npm i -g near-cli-rs
+    command: |
       cp .env.example .env
+      near create-dev-account use-random-account-id autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
+      NEAR_ACCOUNT_KEYS=$(cat ~/.near-credentials/testnet/$(ls ~/.near-credentials/testnet | head -n 1))
+      NEAR_ADDRESS=$(echo $NEAR_ACCOUNT_KEYS | jq -r ".account_id")
+      NEAR_WALLET_SECRET_KEY=$(echo $NEAR_ACCOUNT_KEYS | jq -r ".private_key")
+      sed -i 's/NEAR_ADDRESS=.*$/NEAR_ADDRESS='${NEAR_ADDRESS}'/g' .env
+      sed -i "" 's/NEAR_WALLET_SECRET_KEY=.*$/NEAR_WALLET_SECRET_KEY='${NEAR_WALLET_SECRET_KEY}'/g' .env.test
+  - name: Install agent dependencies
+    init: pnpm i
   - name: Install web client dependencies
     init: cd client && pnpm i && cd ..

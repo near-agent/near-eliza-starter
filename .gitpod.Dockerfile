@@ -1,4 +1,4 @@
-FROM workspace-python-3.11
+FROM gitpod/workspace-python-3.11
 
 # nvm environment variables
 ENV NVM_DIR /usr/local/nvm
