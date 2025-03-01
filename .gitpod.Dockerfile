@@ -19,4 +19,8 @@ RUN source $NVM_DIR/nvm.sh \
 ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 
+# install pnpm
+RUN npm i -g pnpm
+
+# set server url for web client
 ENV VITE_SERVER_URL $(gp url 3000)
