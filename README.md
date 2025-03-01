@@ -1,5 +1,7 @@
 # near-eliza-starter
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/think-in-universe/near-eliza-starter)
+
 <img src="https://github.com/user-attachments/assets/b0ed9973-aa87-4602-93c3-e9d723279045" alt="Description" width="100">
 <img src="https://github.com/user-attachments/assets/d47b5bdd-3e9b-4e2c-ac7a-7edc66978baf" alt="Description" width="100">
 
