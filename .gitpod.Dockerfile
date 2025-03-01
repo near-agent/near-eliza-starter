@@ -6,6 +6,7 @@ ENV NODE_VERSION 23.3.0
 
 # install nvm
 # https://github.com/creationix/nvm#install-script
+RUN mkdir $NVM_DIR
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 
 # install node and npm
