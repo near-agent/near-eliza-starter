@@ -33,4 +33,6 @@ tasks:
   - name: Agent Server
     init: pnpm i
   - name: Web Client
+    before: export VITE_SERVER_URL=$(gp url 3000)
     init: cd client && pnpm i && cd ..
+    command: pnpm start:client
