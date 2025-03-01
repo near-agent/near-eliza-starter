@@ -13,7 +13,7 @@ RUN echo 'export NVM_DIR="$HOME/.nvm"' >> $HOME/.bashrc
 RUN echo '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" ' >> $HOME/.bashrc
 
 # install node and npm
-RUN source $NVM_DIR/nvm.sh \
+RUN . $NVM_DIR/nvm.sh \
     && nvm install $NODE_VERSION \
     && nvm alias default $NODE_VERSION \
     && nvm use default
