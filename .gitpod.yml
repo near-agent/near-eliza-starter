@@ -2,16 +2,16 @@ image:
   file: .gitpod.Dockerfile
 # List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/config-start-tasks/
 ports:
-    - name: Agent Server
-      description: The agent API server
-      port: 3000
-      onOpen: ignore
-      visibility: public
-    - name: Web Client
-      description: The web client to chat with the agent
-      port: 5173
-      onOpen: open-browser
-      visibility: public
+  - name: Agent Server
+    description: The agent API server
+    port: 3000
+    onOpen: ignore
+    visibility: public
+  - name: Web Client
+    description: The web client to chat with the agent
+    port: 5173
+    onOpen: open-browser
+    visibility: public
 tasks:
   - name: Set up NEAR AI CLI
     init: python -m pip install nearai
