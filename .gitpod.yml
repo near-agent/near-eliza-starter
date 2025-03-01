@@ -1,0 +1,10 @@
+image:
+  file: .gitpod.Dockerfile
+# List the start up tasks. You can start them in parallel in multiple terminals. See https://www.gitpod.io/docs/config-start-tasks/
+tasks:
+  - name: Set up NEAR AI CLI
+    init: python -m pip install nearai
+  - name: Install agent dependencies
+    init: pnpm i
+  - name: Install web client dependencies
+    init: cd client && pnpm i && cd ..
