@@ -4,7 +4,9 @@ image:
 tasks:
   - name: Set up NEAR AI CLI
     init: python -m pip install nearai
+    command: nearai login --remote
   - name: Install agent dependencies
     init: pnpm i
   - name: Install web client dependencies
+    before: export VITE_SERVER_URL=$(gp url 3000)
     init: cd client && pnpm i && cd ..
