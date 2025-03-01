@@ -19,10 +19,11 @@ tasks:
       [ -f ~/.nearai/config.json ] || (printf "\n\n*** NEAR AI login ***\n\n" && nearai login --remote)
   - name: Create NEAR Testnet Account
     init: |
+      NEAR_CREDENTIALS_TESTNET_DIR=~/.near-credentials/testnet
+      [ -d "'$NEAR_CREDENTIALS_TESTNET_DIR'" ] || exit
       npm i -g near-cli-rs
       cp .env.example .env
       near account create-account sponsor-by-faucet-service eliza-$(date +%s%3N).testnet autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
-      NEAR_CREDENTIALS_TESTNET_DIR=~/.near-credentials/testnet
       NEAR_ACCOUNT_JSON_FILE=$(ls $NEAR_CREDENTIALS_TESTNET_DIR/*.json | head -n 1)
       NEAR_ACCOUNT_KEYS=$(cat $NEAR_ACCOUNT_JSON_FILE)
       NEAR_ADDRESS=$(basename $NEAR_ACCOUNT_JSON_FILE .json)
