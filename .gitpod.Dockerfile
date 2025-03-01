@@ -25,5 +25,8 @@ ENV PATH $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 # install pnpm
 RUN npm i -g pnpm
 
+# copy .env file
+RUN cp .env.example .env
+
 # set server url for web client
 ENV VITE_SERVER_URL $(gp url 3000)

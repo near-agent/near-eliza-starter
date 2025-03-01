@@ -21,14 +21,13 @@ tasks:
   - name: Create NEAR Testnet Account
     init: |
       npm i -g near-cli-rs
-      cp .env.example .env
       near create-dev-account use-random-account-id autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
       NEAR_CREDENTIALS_TESTNET_DIR=~/.near-credentials/testnet
       NEAR_ACCOUNT_KEYS=$(cat $NEAR_CREDENTIALS_TESTNET_DIR/$(ls $NEAR_CREDENTIALS_TESTNET_DIR | head -n 1))
       NEAR_ADDRESS=$(echo $NEAR_ACCOUNT_KEYS | jq -r ".account_id")
       NEAR_WALLET_SECRET_KEY=$(echo $NEAR_ACCOUNT_KEYS | jq -r ".private_key")
       sed -i 's/NEAR_ADDRESS=.*$/NEAR_ADDRESS='${NEAR_ADDRESS}'/g' .env
-      sed -i "" 's/NEAR_WALLET_SECRET_KEY=.*$/NEAR_WALLET_SECRET_KEY='${NEAR_WALLET_SECRET_KEY}'/g' .env.test
+      sed -i 's/NEAR_WALLET_SECRET_KEY=.*$/NEAR_WALLET_SECRET_KEY='${NEAR_WALLET_SECRET_KEY}'/g' .env
   - name: Agent Server
     init: pnpm i
   - name: Web Client
