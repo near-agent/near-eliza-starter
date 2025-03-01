@@ -14,7 +14,6 @@ ports:
     visibility: public
 tasks:
   - name: NEAR AI CLI
-    init: python -m pip install nearai
     command: |
       nearai login --remote
       echo "Open the above link to login NEAR AI if you haven't done so. Skip this step if it's already completed."
@@ -22,10 +21,11 @@ tasks:
     init: |
       npm i -g near-cli-rs
       cp .env.example .env
-      near create-dev-account use-random-account-id autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
+      near account create-account sponsor-by-faucet-service eliza-$(date +%s).testnet autogenerate-new-keypair save-to-legacy-keychain network-config testnet create
       NEAR_CREDENTIALS_TESTNET_DIR=~/.near-credentials/testnet
-      NEAR_ACCOUNT_KEYS=$(cat $NEAR_CREDENTIALS_TESTNET_DIR/$(ls $NEAR_CREDENTIALS_TESTNET_DIR | head -n 1))
-      NEAR_ADDRESS=$(echo $NEAR_ACCOUNT_KEYS | jq -r ".account_id")
+      NEAR_ACCOUNT_JSON_FILE=$(ls $NEAR_CREDENTIALS_TESTNET_DIR/*.json | head -n 1)
+      NEAR_ACCOUNT_KEYS=$(cat $NEAR_ACCOUNT_JSON_FILE)
+      NEAR_ADDRESS=$(basename $NEAR_ACCOUNT_JSON_FILE .json)
       NEAR_WALLET_SECRET_KEY=$(echo $NEAR_ACCOUNT_KEYS | jq -r ".private_key")
       sed -i 's/NEAR_ADDRESS=.*$/NEAR_ADDRESS='${NEAR_ADDRESS}'/g' .env
       sed -i 's/NEAR_WALLET_SECRET_KEY=.*$/NEAR_WALLET_SECRET_KEY='${NEAR_WALLET_SECRET_KEY}'/g' .env
