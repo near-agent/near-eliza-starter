@@ -4,7 +4,7 @@ import { multichainPlugin } from "@elizaos/plugin-multichain";
 
 export const character: Character = {
     name: "Eliza",
-    plugins: [],
+    plugins: [nearPlugin, multichainPlugin],
     clientConfig: {},
     modelProvider: ModelProviderName.NEARAI,
     settings: {
