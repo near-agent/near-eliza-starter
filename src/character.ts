@@ -1,12 +1,11 @@
-import { Character, defaultCharacter, ModelProviderName } from "@elizaos/core";
+import { Character, ModelProviderName } from "@elizaos/core";
 import { nearPlugin } from "@elizaos/plugin-near";
 import { multichainPlugin } from "@elizaos/plugin-multichain";
 
 export const character: Character = {
-    ...defaultCharacter,
     name: "Eliza",
-    plugins: [nearPlugin, multichainPlugin],
-    clients: [],
+    plugins: [],
+    clientConfig: {},
     modelProvider: ModelProviderName.NEARAI,
     settings: {
         secrets: {},

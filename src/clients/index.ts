@@ -9,7 +9,7 @@ export async function initializeClients(
   runtime: IAgentRuntime
 ) {
   const clients = [];
-  const clientTypes = character.clients?.map((str) => str.toLowerCase()) || [];
+  const clientTypes = Object.keys(character.clientConfig).map((str) => str.toLowerCase()) || [];
 
   if (clientTypes.includes("auto")) {
     const autoClient = await AutoClientInterface.start(runtime);

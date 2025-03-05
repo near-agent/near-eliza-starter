@@ -14,13 +14,13 @@
   },
   "dependencies": {
     "@elizaos/adapter-postgres": "0.1.9",
-    "@elizaos/adapter-sqlite": "0.1.9",
-    "@elizaos/client-auto": "0.1.9",
-    "@elizaos/client-direct": "0.1.9",
-    "@elizaos/client-discord": "0.1.9",
-    "@elizaos/client-telegram": "0.1.9",
-    "@elizaos/client-twitter": "0.1.9",
-    "@elizaos/core": "npm:@near-agent/elizaos-core@0.1.9-patch.2",
+    "@elizaos/adapter-sqlite": "0.25.6-alpha.1",
+    "@elizaos/client-auto": "0.25.6-alpha.1",
+    "@elizaos/client-direct": "0.25.9",
+    "@elizaos/client-discord": "0.25.6-alpha.1",
+    "@elizaos/client-telegram": "0.25.6-alpha.1",
+    "@elizaos/client-twitter": "0.25.6-alpha.1",
+    "@elizaos/core": "0.25.9",
     "@elizaos/plugin-bootstrap": "0.1.9",
     "@elizaos/plugin-image-generation": "0.1.9",
     "@elizaos/plugin-multichain": "npm:@near-agent/elizaos-plugin-multichain",
@@ -43,7 +43,7 @@
   },
   "pnpm": {
     "overrides": {
-      "@elizaos/core@0.1.9": "npm:@near-agent/elizaos-core@0.1.9-patch.2",
+      "@elizaos/core@0.25.6-alpha.1": "0.25.9",
       "onnxruntime-node": "1.20.0"
     },
     "onlyBuiltDependencies": [
