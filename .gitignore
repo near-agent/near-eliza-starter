@@ -10,4 +10,4 @@ db.sqlite
 .tee-cloud
 
 generatedImages/
-data/uploads
+data/uploads/

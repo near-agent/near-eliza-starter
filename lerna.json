@@ -1,5 +1,5 @@
 {
-	"version": "0.1.9",
+	"version": "0.25.9",
 	"packages": ["client"],
 	"npmClient": "pnpm",
 	"command": {
