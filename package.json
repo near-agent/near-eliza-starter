@@ -20,7 +20,7 @@
     "@elizaos/client-discord": "0.25.6-alpha.1",
     "@elizaos/client-telegram": "0.25.6-alpha.1",
     "@elizaos/client-twitter": "0.25.6-alpha.1",
-    "@elizaos/core": "0.25.9",
+    "@elizaos/core": "npm:@near-agent/elizaos-core@0.25.9-patch.1",
     "@elizaos/plugin-bootstrap": "0.25.6-alpha.1",
     "@elizaos/plugin-image-generation": "0.25.6-alpha.1",
     "@elizaos/plugin-multichain": "npm:@near-agent/elizaos-plugin-multichain@0.25.6-alpha.1",
@@ -43,7 +43,7 @@
   },
   "pnpm": {
     "overrides": {
-      "@elizaos/core@0.25.6-alpha.1": "0.25.9",
+      "@elizaos/core@0.25.6-alpha.1": "npm:@near-agent/elizaos-core@0.25.9-patch.1",
       "onnxruntime-node": "1.20.0"
     },
     "onlyBuiltDependencies": [
