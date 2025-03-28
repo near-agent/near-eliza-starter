@@ -27,7 +27,8 @@ Multichain Features:
 
 ![dbef7cf3-f79f-430c-9497-f92b61c9d151](https://github.com/user-attachments/assets/6b2c5319-b18f-4eb9-af7a-a3bccb9f6733)
 
-Learn more about the tech stack with [this slides](https://docs.google.com/presentation/d/1JmSvQmJm9N_EBnpo9cfYtvKVethY9jGvz2fh4e78f8E/edit?usp=sharing)
+Learn about the NEAR x Eliza Agent Stack with [this slides](https://docs.google.com/presentation/d/1JmSvQmJm9N_EBnpo9cfYtvKVethY9jGvz2fh4e78f8E/edit?usp=sharing)
+
 
 ## Prepare Environment
 
