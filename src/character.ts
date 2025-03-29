@@ -1,10 +1,11 @@
 import { Character, ModelProviderName } from "@elizaos/core";
 import { nearPlugin } from "@elizaos/plugin-near";
 import { multichainPlugin } from "@elizaos/plugin-multichain";
+import { imageGenerationPlugin } from "@elizaos/plugin-image-generation"
 
 export const character: Character = {
     name: "Eliza",
-    plugins: [nearPlugin, multichainPlugin],
+    plugins: [nearPlugin, multichainPlugin, imageGenerationPlugin],
     clientConfig: {},
     modelProvider: ModelProviderName.NEARAI,
     settings: {
